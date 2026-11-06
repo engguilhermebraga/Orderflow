@@ -4,7 +4,7 @@
 |---|---|
 | Produto | Business Management SaaS (repositório: `Orderflow`) |
 | Documento | Visão do produto — resultado da Fase 1 (Descoberta e planejamento) |
-| Versão | 1.0 — **aprovado em 2026-11-06** (pendentes: D2 e D18, ver 14.3) |
+| Versão | 1.1 — **aprovado em 2026-11-06**, todas as decisões da Fase 1 fechadas (ver 14.3) |
 | Data | 2026-11-06 |
 | Autores | Guilherme Braga (desenvolvedor), Claude (tech lead / revisor) |
 | Próxima fase | Fase 2 — Requisitos e regras de negócio (`02-requirements.md`, `03-business-rules.md`) |
@@ -480,7 +480,7 @@ stateDiagram-v2
 
 ### 14.3 Registro de aprovação (2026-11-06)
 
-O documento foi aprovado sem ressalvas. Com isso, as recomendações padrão das seções 7 e 14 passam a valer como decisões do projeto. Decisões de fases posteriores (D6, D7, D10–D14, D16, D17) continuam abertas e serão formalizadas como ADR na fase indicada.
+O documento foi aprovado sem ressalvas, e D2 e D18 foram decididas na mesma data. Com isso, as recomendações padrão das seções 7 e 14 passam a valer como decisões do projeto. Decisões de fases posteriores (D6, D7, D10–D14, D16, D17) continuam abertas e serão formalizadas como ADR na fase indicada.
 
 | ID | Decisão adotada |
 |---|---|
@@ -490,17 +490,12 @@ O documento foi aprovado sem ressalvas. Com isso, as recomendações padrão das
 | D5 | PLATFORM_ADMIN existe e atua apenas sobre o cadastro de tenants, sem acesso a dados de negócio |
 | D8 | Máquina de estados da seção 14.2; baixa de estoque na confirmação, tudo ou nada |
 | D9 | Pagamentos = registro manual do pagamento integral do pedido |
+| D2 | Licença **MIT** (substitui a GPL v2 do commit inicial) |
 | D15 | Código, API e commits em inglês; documentação em português |
+| D18 | Cronograma de **8 semanas com MVP completo**: Pagamentos, Relatórios e consulta de auditoria entram no MVP |
 | Seção 7 | Recomendações padrão de A1–A23 aceitas |
 | Seção 8 | Escopo do MVP aceito |
 | Seção 11 | Premissas de volume aceitas como referência |
-
-**Ainda pendentes**, porque a recomendação apresentava mais de uma opção e a escolha cabe ao autor:
-
-| ID | Pergunta em aberto | Bloqueia |
-|---|---|---|
-| D2 | Qual licença: MIT, Apache 2.0, AGPL v3 ou manter GPL v2? | Nada na Fase 2; precisa estar decidida antes do primeiro código (Fase 5) |
-| D18 | 8 semanas com MVP completo, ou 6 semanas com Pagamentos/Relatórios/consulta de auditoria fora do MVP? | Profundidade dos requisitos *Should* na Fase 2 |
 
 ---
 
@@ -522,13 +517,15 @@ O plano do projeto e as 10 fases se encaixam assim:
 1. **Testes não são uma semana; são parte de cada módulo.** O plano coloca testes na semana 5, mas o próprio prompt-mestre diz que nenhum módulo está concluído sem testes. Proponho que a semana 5 seja de *testes transversais* (segurança, concorrência, carga), e que testes unitários e de integração sejam escritos junto com cada módulo.
 2. **Proposta:** estender para **8 semanas** (semanas 4–6 para módulos Must, na ordem do diagrama 1) **ou** manter 6 semanas aceitando que *Should* (Pagamentos, Relatórios, consulta de auditoria) fica para depois do MVP. As duas são legítimas; a escolha é sua (D18).
 
+**Decisão (D18):** 8 semanas com MVP completo. Distribuição: semana 4 — Tenant, Auth, RBAC; semana 5 — Clientes, Produtos, Estoque; semana 6 — Pedidos e Pagamentos; semana 7 — Auditoria, Relatórios e testes transversais (segurança, concorrência, carga); semana 8 — CI/CD completo, deploy e revisão final.
+
 ---
 
 ## 16. Critérios de aceite desta fase
 
 A Fase 1 está concluída quando:
 
-- [ ] As decisões marcadas como **Fase 1** na seção 14 estão aprovadas ou ajustadas — aprovadas D1, D3, D4, D5, D8, D9, D15; **pendentes D2 e D18** (ver 14.3).
+- [x] As decisões marcadas como **Fase 1** na seção 14 estão aprovadas ou ajustadas (ver 14.3).
 - [x] O escopo do MVP (seção 8) está aceito.
 - [x] As ambiguidades da seção 7 têm resposta ou aceitam a recomendação padrão.
 - [x] As premissas de volume (seção 11) estão aceitas como referência.
